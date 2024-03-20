@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E815F31B2BAA50340042E605 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F31A2BAA50340042E605 /* UserLogin.swift */; };
+		E815F31E2BAA517B0042E605 /* URLSessionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F31D2BAA517B0042E605 /* URLSessionApiService.swift */; };
+		E815F3212BAA521F0042E605 /* ApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3202BAA521F0042E605 /* ApiServiceProtocol.swift */; };
+		E815F3242BAA580E0042E605 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3232BAA580E0042E605 /* APIConstants.swift */; };
+		E815F3272BAA5A900042E605 /* ProductApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3262BAA5A900042E605 /* ProductApiService.swift */; };
 		E8D7311D2BAA3CCD003D1EF9 /* KazkYazilimProject_1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7311C2BAA3CCD003D1EF9 /* KazkYazilimProject_1App.swift */; };
 		E8D7311F2BAA3CCD003D1EF9 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7311E2BAA3CCD003D1EF9 /* LoginScreenView.swift */; };
 		E8D731212BAA3CCF003D1EF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D731202BAA3CCF003D1EF9 /* Assets.xcassets */; };
@@ -20,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E815F31A2BAA50340042E605 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		E815F31D2BAA517B0042E605 /* URLSessionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionApiService.swift; sourceTree = "<group>"; };
+		E815F3202BAA521F0042E605 /* ApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceProtocol.swift; sourceTree = "<group>"; };
+		E815F3232BAA580E0042E605 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		E815F3262BAA5A900042E605 /* ProductApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductApiService.swift; sourceTree = "<group>"; };
 		E8D731192BAA3CCD003D1EF9 /* KazkYazilimProject-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KazkYazilimProject-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D7311C2BAA3CCD003D1EF9 /* KazkYazilimProject_1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KazkYazilimProject_1App.swift; sourceTree = "<group>"; };
 		E8D7311E2BAA3CCD003D1EF9 /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
@@ -44,6 +54,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E815F31C2BAA51700042E605 /* BaseService */ = {
+			isa = PBXGroup;
+			children = (
+				E815F31D2BAA517B0042E605 /* URLSessionApiService.swift */,
+			);
+			path = BaseService;
+			sourceTree = "<group>";
+		};
+		E815F31F2BAA52050042E605 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				E815F3202BAA521F0042E605 /* ApiServiceProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		E815F3222BAA58020042E605 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E815F3232BAA580E0042E605 /* APIConstants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		E8D731102BAA3CCD003D1EF9 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +97,7 @@
 		E8D7311B2BAA3CCD003D1EF9 /* KazkYazilimProject-1 */ = {
 			isa = PBXGroup;
 			children = (
+				E815F3222BAA58020042E605 /* Helpers */,
 				E8D7312F2BAA3D00003D1EF9 /* App */,
 				E8D7312E2BAA3CF8003D1EF9 /* Services */,
 				E8D7312D2BAA3CDB003D1EF9 /* Extensions */,
@@ -104,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				E8D731322BAA3D47003D1EF9 /* FocusableField.swift */,
+				E815F31A2BAA50340042E605 /* UserLogin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -119,6 +155,9 @@
 		E8D7312E2BAA3CF8003D1EF9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E815F31F2BAA52050042E605 /* Protocol */,
+				E815F31C2BAA51700042E605 /* BaseService */,
+				E815F3262BAA5A900042E605 /* ProductApiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -212,11 +251,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8D731382BAA3D6C003D1EF9 /* SecureTextField.swift in Sources */,
+				E815F31B2BAA50340042E605 /* UserLogin.swift in Sources */,
 				E8D7311F2BAA3CCD003D1EF9 /* LoginScreenView.swift in Sources */,
 				E8D731362BAA3D63003D1EF9 /* TextFieldView.swift in Sources */,
+				E815F3212BAA521F0042E605 /* ApiServiceProtocol.swift in Sources */,
 				E8D7313A2BAA3D75003D1EF9 /* BackgroundView.swift in Sources */,
 				E8D7311D2BAA3CCD003D1EF9 /* KazkYazilimProject_1App.swift in Sources */,
 				E8D731312BAA3D35003D1EF9 /* LoginScreenViewModel.swift in Sources */,
+				E815F3242BAA580E0042E605 /* APIConstants.swift in Sources */,
+				E815F3272BAA5A900042E605 /* ProductApiService.swift in Sources */,
+				E815F31E2BAA517B0042E605 /* URLSessionApiService.swift in Sources */,
 				E8D731332BAA3D47003D1EF9 /* FocusableField.swift in Sources */,
 				E8D7313C2BAA3D98003D1EF9 /* UIColor + Ext.swift in Sources */,
 			);
