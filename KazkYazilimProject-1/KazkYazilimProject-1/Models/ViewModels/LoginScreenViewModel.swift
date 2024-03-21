@@ -9,13 +9,12 @@ import SwiftUI
 
 class LoginScreenViewModel:ObservableObject {
     
-    // MARK: variables
     @Published var subdomain:String = ""
     @Published var email:String = ""
     @Published var password:String = ""
-
+    @Published var isLogged = false
     @Published private var colorScheme:ColorScheme?
-    
+    @Published var emails :String = ""
     @Published private var focusedField: FocusableField?
     
     func focusNextField(focusField:FocusableField)  {

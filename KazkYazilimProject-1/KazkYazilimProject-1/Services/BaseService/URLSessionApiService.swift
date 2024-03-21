@@ -7,15 +7,15 @@
 
 import Foundation
 
-class URLSessionApiService {
+class URLSessionApiService:ApiServiceProtocol {
     
     static let shared = URLSessionApiService()
     
     private init ()  { }
     
-    func getRequest<T:Decodable>(endpoint:String,userLogin:UserLogin,completion: @escaping (Result<T,Error>) -> Void) {
+    func getRequest<T:Codable>(parameters: [String : Any]?, endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
         
-        guard let url = URL(string: endpoint ) else {
+        guard let url = URL(string: endpoint) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             fatalError("")
         }
@@ -43,4 +43,18 @@ class URLSessionApiService {
         }
         .resume()
     }
+    
+    func addRequest<T>(endpoint: URL, data: T, completion: @escaping (Result<Void, Error>) -> Void) where T : Decodable, T : Encodable {
+        
+    }
+    
+    func updateRequest<T>(endpoint: URL, data: T, completion: @escaping (Result<Void, Error>) -> Void) where T : Decodable, T : Encodable {
+        
+    }
+    
+    func deleteRequest(endpoint: URL, completion: @escaping (Result<Void, Error>) -> Void) {
+        
+    }
+    
+
 }

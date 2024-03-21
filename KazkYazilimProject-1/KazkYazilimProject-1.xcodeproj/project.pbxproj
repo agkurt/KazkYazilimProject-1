@@ -11,7 +11,6 @@
 		E815F31E2BAA517B0042E605 /* URLSessionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F31D2BAA517B0042E605 /* URLSessionApiService.swift */; };
 		E815F3212BAA521F0042E605 /* ApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3202BAA521F0042E605 /* ApiServiceProtocol.swift */; };
 		E815F3242BAA580E0042E605 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3232BAA580E0042E605 /* APIConstants.swift */; };
-		E815F3272BAA5A900042E605 /* ProductApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3262BAA5A900042E605 /* ProductApiService.swift */; };
 		E8D7311D2BAA3CCD003D1EF9 /* KazkYazilimProject_1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7311C2BAA3CCD003D1EF9 /* KazkYazilimProject_1App.swift */; };
 		E8D7311F2BAA3CCD003D1EF9 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7311E2BAA3CCD003D1EF9 /* LoginScreenView.swift */; };
 		E8D731212BAA3CCF003D1EF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D731202BAA3CCF003D1EF9 /* Assets.xcassets */; };
@@ -22,6 +21,10 @@
 		E8D731382BAA3D6C003D1EF9 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D731372BAA3D6C003D1EF9 /* SecureTextField.swift */; };
 		E8D7313A2BAA3D75003D1EF9 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D731392BAA3D75003D1EF9 /* BackgroundView.swift */; };
 		E8D7313C2BAA3D98003D1EF9 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7313B2BAA3D97003D1EF9 /* UIColor + Ext.swift */; };
+		E8DE31852BAB322700B60F57 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE31842BAB322700B60F57 /* OrderView.swift */; };
+		E8DE31872BAB328E00B60F57 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE31862BAB328E00B60F57 /* Product.swift */; };
+		E8DE31892BAB899F00B60F57 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE31882BAB899F00B60F57 /* OrderViewModel.swift */; };
+		E8DE318B2BAB8B6900B60F57 /* ProductApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE318A2BAB8B6900B60F57 /* ProductApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +32,6 @@
 		E815F31D2BAA517B0042E605 /* URLSessionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionApiService.swift; sourceTree = "<group>"; };
 		E815F3202BAA521F0042E605 /* ApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceProtocol.swift; sourceTree = "<group>"; };
 		E815F3232BAA580E0042E605 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
-		E815F3262BAA5A900042E605 /* ProductApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductApiService.swift; sourceTree = "<group>"; };
 		E8D731192BAA3CCD003D1EF9 /* KazkYazilimProject-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KazkYazilimProject-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D7311C2BAA3CCD003D1EF9 /* KazkYazilimProject_1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KazkYazilimProject_1App.swift; sourceTree = "<group>"; };
 		E8D7311E2BAA3CCD003D1EF9 /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
@@ -41,6 +43,10 @@
 		E8D731372BAA3D6C003D1EF9 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		E8D731392BAA3D75003D1EF9 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		E8D7313B2BAA3D97003D1EF9 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
+		E8DE31842BAB322700B60F57 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		E8DE31862BAB328E00B60F57 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		E8DE31882BAB899F00B60F57 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		E8DE318A2BAB8B6900B60F57 /* ProductApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +108,7 @@
 				E8D7312E2BAA3CF8003D1EF9 /* Services */,
 				E8D7312D2BAA3CDB003D1EF9 /* Extensions */,
 				E8D7312C2BAA3CD9003D1EF9 /* Models */,
-				E8D7312B2BAA3CD8003D1EF9 /* ViewModels */,
 				E8D7312A2BAA3CD5003D1EF9 /* Views */,
-				E8D7311E2BAA3CCD003D1EF9 /* LoginScreenView.swift */,
 				E8D731202BAA3CCF003D1EF9 /* Assets.xcassets */,
 				E8D731222BAA3CCF003D1EF9 /* Preview Content */,
 			);
@@ -122,6 +126,8 @@
 		E8D7312A2BAA3CD5003D1EF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8DE31812BAB31E300B60F57 /* Home */,
+				E8DE31802BAB31DE00B60F57 /* Login */,
 				E8D731342BAA3D55003D1EF9 /* ComponentsViews */,
 			);
 			path = Views;
@@ -131,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				E8D731302BAA3D35003D1EF9 /* LoginScreenViewModel.swift */,
+				E8DE31882BAB899F00B60F57 /* OrderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -140,6 +147,8 @@
 			children = (
 				E8D731322BAA3D47003D1EF9 /* FocusableField.swift */,
 				E815F31A2BAA50340042E605 /* UserLogin.swift */,
+				E8DE31862BAB328E00B60F57 /* Product.swift */,
+				E8D7312B2BAA3CD8003D1EF9 /* ViewModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,7 +166,7 @@
 			children = (
 				E815F31F2BAA52050042E605 /* Protocol */,
 				E815F31C2BAA51700042E605 /* BaseService */,
-				E815F3262BAA5A900042E605 /* ProductApiService.swift */,
+				E8DE318A2BAB8B6900B60F57 /* ProductApiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -178,6 +187,22 @@
 				E8D731392BAA3D75003D1EF9 /* BackgroundView.swift */,
 			);
 			path = ComponentsViews;
+			sourceTree = "<group>";
+		};
+		E8DE31802BAB31DE00B60F57 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E8D7311E2BAA3CCD003D1EF9 /* LoginScreenView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E8DE31812BAB31E300B60F57 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E8DE31842BAB322700B60F57 /* OrderView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,18 +275,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8DE31872BAB328E00B60F57 /* Product.swift in Sources */,
 				E8D731382BAA3D6C003D1EF9 /* SecureTextField.swift in Sources */,
 				E815F31B2BAA50340042E605 /* UserLogin.swift in Sources */,
 				E8D7311F2BAA3CCD003D1EF9 /* LoginScreenView.swift in Sources */,
 				E8D731362BAA3D63003D1EF9 /* TextFieldView.swift in Sources */,
 				E815F3212BAA521F0042E605 /* ApiServiceProtocol.swift in Sources */,
 				E8D7313A2BAA3D75003D1EF9 /* BackgroundView.swift in Sources */,
+				E8DE31892BAB899F00B60F57 /* OrderViewModel.swift in Sources */,
 				E8D7311D2BAA3CCD003D1EF9 /* KazkYazilimProject_1App.swift in Sources */,
 				E8D731312BAA3D35003D1EF9 /* LoginScreenViewModel.swift in Sources */,
 				E815F3242BAA580E0042E605 /* APIConstants.swift in Sources */,
-				E815F3272BAA5A900042E605 /* ProductApiService.swift in Sources */,
 				E815F31E2BAA517B0042E605 /* URLSessionApiService.swift in Sources */,
+				E8DE31852BAB322700B60F57 /* OrderView.swift in Sources */,
 				E8D731332BAA3D47003D1EF9 /* FocusableField.swift in Sources */,
+				E8DE318B2BAB8B6900B60F57 /* ProductApiService.swift in Sources */,
 				E8D7313C2BAA3D98003D1EF9 /* UIColor + Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

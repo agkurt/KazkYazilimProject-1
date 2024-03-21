@@ -11,7 +11,7 @@ struct LoginScreenView: View {
     @StateObject private var loginViewModel = LoginScreenViewModel()
     @FocusState var focusedField:FocusableField?
     @Environment(\.colorScheme) private var colorScheme
-
+    
     
     var body: some View {
         NavigationStack {
@@ -21,7 +21,7 @@ struct LoginScreenView: View {
                     VStack {
                         VStack(spacing:0) {
                             VStack(alignment:.leading,spacing: 15) {
-                                Text(" Welcome")
+                                Text(" KAZK ECOMMERCE")
                                     .frame(maxWidth: .infinity,alignment:.leading)
                                     .font(.custom("Poppins-Medium", size: 25))
                                 Text(" Login")
@@ -52,9 +52,9 @@ struct LoginScreenView: View {
                             }
                             .padding()
                             
-                            Button(action: {
-                                // login request process
-                            }, label: {
+                            NavigationLink {
+                                OrderView()
+                            } label: {
                                 Text("Login")
                                     .font(.custom("Poppins-Light", size: 15))
                                     .frame(maxWidth: .infinity,alignment:.center)
@@ -62,7 +62,7 @@ struct LoginScreenView: View {
                                     .background(Color(hex: "#313a45"))
                                     .foregroundColor(.white)
                                     .cornerRadius(30)
-                            })
+                            }
                             .ignoresSafeArea(.keyboard)
                             .padding()
                         }

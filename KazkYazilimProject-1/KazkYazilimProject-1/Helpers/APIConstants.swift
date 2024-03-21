@@ -8,5 +8,5 @@
 import Foundation
 
 class APIConstants {
-    static let baseURL = URL(string: "")! // get the base url
+    static let baseURL = "https://dummyjson.com/products"
 }
