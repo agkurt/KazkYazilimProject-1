@@ -8,5 +8,12 @@
 import Foundation
 
 class APIConstants {
-    static let baseURL = "https://dummyjson.com/products"
+    
+    static func loginURL(subdomain: String) -> String {
+        return "http://service.\(subdomain).kazkerp.com/api/exec/login"
+    }
+    static func productURL(subdomain:String) -> String {
+        return "http://service.\(subdomain).kazkerp.com/api/exec/get_orders"
+    }
 }
+

@@ -7,19 +7,19 @@
 
 import Foundation
 
-class ProductApiService {
+class UserLoginApiService {
     
     let apiServiceProtocol :ApiServiceProtocol
     
     init(apiServiceProtocol: ApiServiceProtocol) {
         self.apiServiceProtocol = apiServiceProtocol
     }
-        
-    func getAllProduct(parameters: [String:Any]?,completion: @escaping (Result<[Product],Error>)-> Void) {
-        apiServiceProtocol.getRequest(parameters: parameters, endpoint: APIConstants.baseURL) { (result: Result<ProductResponse,Error>) in
+    
+    func loginRequest(subdomain:String,data: UserLogin, completion: @escaping (Result<UserLoginResponse, Error>) -> Void) {
+        apiServiceProtocol.addRequest(endpoint: APIConstants.loginURL(subdomain: subdomain), data: data) { (result: Result<UserLoginResponse,Error>) in
             switch result {
-            case .success(let data):
-                completion(.success(data.products))
+            case .success(let response):
+                completion(.success(response))
             case .failure(let error):
                 completion(.failure(error))
             }

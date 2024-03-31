@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct LoginScreenView: View {
-    @StateObject private var loginViewModel = LoginScreenViewModel()
+    
     @FocusState var focusedField:FocusableField?
     @Environment(\.colorScheme) private var colorScheme
-    
+    @StateObject var viewModel = LoginScreenViewModel(userLoginApiService: .init(apiServiceProtocol: URLSessionApiService.shared))
+    @State private var showingAlert = false
     
     var body: some View {
         NavigationStack {
@@ -36,25 +37,21 @@ struct LoginScreenView: View {
                                 .padding()
                             
                             VStack(spacing:20) {
-                                TextFieldView(text: $loginViewModel.subdomain,placeholder: "Subdomain")
+                                TextFieldView(text: $viewModel.subdomain,placeholder: "Subdomain")
                                     .focused($focusedField,equals: .subdomain)
-                                TextFieldView(text: $loginViewModel.email, placeholder: "Email")
+                                TextFieldView(text: $viewModel.userLogin.email, placeholder: "Email")
                                     .focused($focusedField, equals: .email)
                                     .keyboardType(.emailAddress)
-                                
-                                SecureTextField(text: $loginViewModel.password)
+                                SecureTextField(text: $viewModel.userLogin.password)
                                     .focused($focusedField, equals: .password)
-                            }
-                            
-                            VStack {
-                                //                            NavigationLink(destination: TabBarCustom().navigationBarBackButtonHidden(), isActive: .constant(authManager.authState != .signedOut)) {
-                                //                                EmptyView()
                             }
                             .padding()
                             
-                            NavigationLink {
-                                OrderView()
-                            } label: {
+                            Button(action: {
+                                
+                                viewModel.addUserLogin(userLogin: viewModel.userLogin, domain: viewModel.subdomain)
+                                
+                            }) {
                                 Text("Login")
                                     .font(.custom("Poppins-Light", size: 15))
                                     .frame(maxWidth: .infinity,alignment:.center)
@@ -63,6 +60,12 @@ struct LoginScreenView: View {
                                     .foregroundColor(.white)
                                     .cornerRadius(30)
                             }
+                            .background(
+                                NavigationLink(destination: OrderView().navigationBarBackButtonHidden(true), isActive: $viewModel.isLogged) {
+                                    EmptyView()
+                                }
+                                    .hidden() // Bu, NavigationLink'i gizler
+                            )
                             .ignoresSafeArea(.keyboard)
                             .padding()
                         }
@@ -70,19 +73,12 @@ struct LoginScreenView: View {
                     }
                     .clipShape(.rect(cornerRadius:20))
                     .padding()
-                    
                     .frame(minWidth: geometry.size.width * 1,minHeight: geometry.size.height * 1)
                     .padding(.top,25)
-                    .ignoresSafeArea(.keyboard, edges: .bottom)
                 }
             }
+            .ignoresSafeArea(.container)
         }
     }
 }
 
-
-
-#Preview {
-    LoginScreenView()
-}
- 
