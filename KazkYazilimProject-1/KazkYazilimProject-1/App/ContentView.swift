@@ -15,15 +15,15 @@ struct ContentView: View {
             VStack {
                 if loginViewModel.isLogged {
                     OrderView()
-                        .environmentObject(loginViewModel)
                 } else {
                     LoginScreenView()
                 }
             }
-            .environmentObject(loginViewModel)
         }
     }
 }
+
+
 
 
 

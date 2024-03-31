@@ -48,17 +48,19 @@ struct LoginScreenView: View {
                             .padding()
                             
                             Button(action: {
-                                
                                 viewModel.addUserLogin(userLogin: viewModel.userLogin, domain: viewModel.subdomain)
-                                
                             }) {
-                                Text("Login")
-                                    .font(.custom("Poppins-Light", size: 15))
-                                    .frame(maxWidth: .infinity,alignment:.center)
-                                    .padding()
-                                    .background(Color(hex: "#313a45"))
-                                    .foregroundColor(.white)
-                                    .cornerRadius(30)
+                                if viewModel.isLogged {
+                                    ProgressView()
+                                } else {
+                                    Text("Login")
+                                        .font(.custom("Poppins-Light", size: 15))
+                                        .frame(maxWidth: .infinity,alignment:.center)
+                                        .padding()
+                                        .background(Color(hex: "#313a45"))
+                                        .foregroundColor(.white)
+                                        .cornerRadius(30)
+                                }
                             }
                             .background(
                                 NavigationLink(destination: OrderView().navigationBarBackButtonHidden(true), isActive: $viewModel.isLogged) {

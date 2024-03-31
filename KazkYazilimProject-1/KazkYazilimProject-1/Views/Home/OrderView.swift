@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OrderView: View {
-    @EnvironmentObject var loginViewModel: LoginScreenViewModel
+    @EnvironmentObject var loginViewModel : LoginScreenViewModel
     @StateObject var orderViewModel = OrderViewModel(orderApiService: OrderApiService(apiServiceProtocol: URLSessionApiService.shared))
     
     var body: some View {
@@ -52,10 +52,13 @@ struct OrderView: View {
                                                 VStack(alignment: .leading) {
                                                     HStack {
                                                         Text("Envanter")
+                                                            .bold()
                                                         Spacer()
                                                         Text("Adet")
+                                                            .bold()
                                                             .padding()
                                                         Text("Fiyat")
+                                                            .bold()
                                                     }
                                                     ForEach(order.outsource_order_items, id: \.self) { item in
                                                         HStack {
@@ -89,9 +92,10 @@ struct OrderView: View {
                 }
                 .navigationTitle("Siparişler")
                 .navigationBarTitleDisplayMode(.inline)
+                
                 .navigationBarItems(trailing: Button(action: {
-                    loginViewModel.isLogged = false
-                    UserDefaults.standard.removeObject(forKey: "token")
+                    loginViewModel.logout()
+                    
                 }) {
                     Text("Çıkış Yap")
                 })
