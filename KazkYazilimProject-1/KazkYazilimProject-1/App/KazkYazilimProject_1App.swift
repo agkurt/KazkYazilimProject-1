@@ -10,12 +10,12 @@ import SwiftUI
 @main
 struct KazkYazilimProject_1App: App {
 
-    @StateObject var loginViewModel = LoginScreenViewModel(userLoginApiService: .init(apiServiceProtocol: URLSessionApiService.shared))
+    @StateObject var loginScreenViewModel = LoginScreenViewModel(userLoginApiService: .init(apiServiceProtocol: URLSessionApiService.shared))
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(loginViewModel)
+            ContentView(loginScreenViewModel: loginScreenViewModel)
+                .environmentObject(loginScreenViewModel)
         }
     }
 }

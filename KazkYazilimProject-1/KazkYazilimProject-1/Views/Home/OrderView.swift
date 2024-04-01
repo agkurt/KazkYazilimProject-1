@@ -94,7 +94,7 @@ struct OrderView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 
                 .navigationBarItems(trailing: Button(action: {
-                    loginViewModel.logout()
+                    loginViewModel.signOut()
                     
                 }) {
                     Text("Çıkış Yap")

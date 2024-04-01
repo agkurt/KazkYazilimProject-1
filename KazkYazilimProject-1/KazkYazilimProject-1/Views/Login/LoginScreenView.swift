@@ -48,7 +48,7 @@ struct LoginScreenView: View {
                             .padding()
                             
                             Button(action: {
-                                viewModel.addUserLogin(userLogin: viewModel.userLogin, domain: viewModel.subdomain)
+                                viewModel.addUserLogin(userLogin: viewModel.userLogin)
                             }) {
                                 if viewModel.isLogged {
                                     ProgressView()

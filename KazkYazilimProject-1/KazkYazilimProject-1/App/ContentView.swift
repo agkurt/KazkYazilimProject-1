@@ -8,20 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var loginViewModel: LoginScreenViewModel
-
+    @ObservedObject var loginScreenViewModel: LoginScreenViewModel
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                if loginViewModel.isLogged {
-                    OrderView()
-                } else {
-                    LoginScreenView()
-                }
+        VStack {
+            if loginScreenViewModel.isLogged {
+                OrderView()
+            } else {
+                LoginScreenView()
             }
         }
+        .onAppear(perform: {
+            if let token = loginScreenViewModel.keychain.get("token"),
+               let email = loginScreenViewModel.keychain.get("email"),
+               let password = loginScreenViewModel.keychain.get("password") {
+                URLSessionApiService.shared.token = token
+                loginScreenViewModel.email = email
+                loginScreenViewModel.password = password
+                loginScreenViewModel.isLogged = true
+            }
+        })
     }
 }
+
 
 
 

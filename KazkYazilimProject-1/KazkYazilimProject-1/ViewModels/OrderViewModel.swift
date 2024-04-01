@@ -8,10 +8,11 @@
 import SwiftUI
 
 class OrderViewModel: ObservableObject {
-
+    
     @Published var ordersResponse: OrdersResponse?
     @Published var isLoaded = false
-    private let orderApiService: OrderApiService
+    
+    let orderApiService: OrderApiService
     
     init(orderApiService: OrderApiService) {
         self.orderApiService = orderApiService
