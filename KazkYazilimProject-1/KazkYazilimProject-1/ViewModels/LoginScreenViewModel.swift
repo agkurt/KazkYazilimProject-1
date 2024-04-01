@@ -8,9 +8,10 @@
 import SwiftUI
 import KeychainSwift
 
+
 class LoginScreenViewModel:ObservableObject {
     
-    @Published var subdomain: String = ""
+    @AppStorage("subdomain") var subdomain: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var isLogged: Bool = false
@@ -20,6 +21,10 @@ class LoginScreenViewModel:ObservableObject {
     @Published var userLoginResponse: UserLoginResponse?
     @Published var userLogin = UserLogin(email: "", password: "")
     @Published var keychain = KeychainSwift()
+    @Published var isLoading = false
+    @Published var showAlert = false
+    
+    
     
     let userLoginApiService: UserLoginApiService
     
@@ -29,27 +34,36 @@ class LoginScreenViewModel:ObservableObject {
     }
     
     func addUserLogin(userLogin: UserLogin) {
-        userLoginApiService.loginRequest(subdomain:subdomain,data: userLogin) { result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    URLSessionApiService.shared.token = data.token
-                    self.keychain.set(data.token, forKey: "token")
-                    self.userLoginResponse = data
-                    self.isLogged = true
+        if subdomain.isEmpty || userLogin.email.isEmpty || userLogin.password.isEmpty  {
+            showAlert = true
+        } else {
+            isLoading = true
+            userLoginApiService.loginRequest(subdomain:subdomain,data: userLogin) { result in
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        URLSessionApiService.shared.token = data.token
+                        self.keychain.set(data.token, forKey: "token")
+                        self.keychain.set(self.email, forKey: "email")
+                        self.keychain.set(self.password, forKey: "password")
+                        self.userLoginResponse = data
+                        self.isLogged = true
+                        self.isLoading = false
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
-                
             }
         }
     }
     
     func signOut() {
         keychain.delete("token")
+        URLSessionApiService.shared.token = nil
         self.isLogged = false
-        self.objectWillChange.send()
-        
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+        }
     }
     
     func focusNextField(focusField:FocusableField) {

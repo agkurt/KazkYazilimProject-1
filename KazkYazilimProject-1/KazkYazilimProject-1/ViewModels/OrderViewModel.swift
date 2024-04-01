@@ -11,6 +11,7 @@ class OrderViewModel: ObservableObject {
     
     @Published var ordersResponse: OrdersResponse?
     @Published var isLoaded = false
+    @EnvironmentObject var loginViewModel: LoginScreenViewModel
     
     let orderApiService: OrderApiService
     
@@ -31,6 +32,7 @@ class OrderViewModel: ObservableObject {
             }
         }
     }
+
 }
 
 

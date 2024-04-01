@@ -11,87 +11,52 @@ struct OrderView: View {
     @EnvironmentObject var loginViewModel : LoginScreenViewModel
     @StateObject var orderViewModel = OrderViewModel(orderApiService: OrderApiService(apiServiceProtocol: URLSessionApiService.shared))
     
+    @State private var selectedTab = "Satışlar"
+    @State private var searchText = ""
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 BackgroundView()
                 VStack(alignment:.leading) {
                     if orderViewModel.isLoaded {
-                        Text("₺\(orderViewModel.ordersResponse?.total ?? 0)")
-                            .font(.largeTitle)
-                            .padding()
-                        ScrollView {
-                            VStack(alignment:.center) {
-                                ForEach(orderViewModel.ordersResponse?.data ?? [], id: \.self) { order in
-                                    VStack(alignment: .leading) {
-                                        VStack(spacing:15) {
-                                            HStack() {
-                                                Text("\(order.customer)")
-                                                    .font(.title3)
-                                                    .bold()
-                                                Spacer()
-                                                Text("#\(order.order_number)")
-                                                    .font(.title3)
-                                                    .bold()
-                                            }
-                                            HStack(spacing:10) {
-                                                Text("\(order.source)")
-                                                let index = order.created_at.index(order.created_at.startIndex, offsetBy: 10)
-                                                let dateSubstring = order.created_at[..<index]
-                                                let date = String(dateSubstring)
-                                                Spacer()
-                                                Text("\(date)")
-                                                let totalPrice = order.outsource_order_items.reduce(0) { $0 + $1.price * Float($1.count) }
-                                                Text("₺\(String(format: "%.2f", totalPrice))")
-                                                    .foregroundStyle(.green)
-                                            }
-                                        }
-                                                                                
-                                        DisclosureGroup(
-                                            content: {
-                                                VStack(alignment: .leading) {
-                                                    HStack {
-                                                        Text("Envanter")
-                                                            .bold()
-                                                        Spacer()
-                                                        Text("Adet")
-                                                            .bold()
-                                                            .padding()
-                                                        Text("Fiyat")
-                                                            .bold()
-                                                    }
-                                                    ForEach(order.outsource_order_items, id: \.self) { item in
-                                                        HStack {
-                                                            Text("\(item.inventory.short_name)")
-                                                            Spacer()
-                                                            Text("\(Int(item.count))")
-                                                                .padding()
-                                                            Text("\(String(format: "%.2f", item.price))")
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            label: {
-                                                Text("Detaylar")
-                                            }
-                                        )
-                                    }
-                                    .padding()
-                                    Divider()
+                        Picker("Tabs", selection: $selectedTab) {
+                            Text("Satışlar").tag("Satışlar")
+                            Text("Raporlar").tag("Raporlar")
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding()
+                        
+                    }
+                    switch selectedTab {
+                    case "Satışlar":
+                        if orderViewModel.isLoaded {
+                            Text("₺\(orderViewModel.ordersResponse?.total ?? 0)")
+                                .font(.largeTitle)
+                                .padding()
+                            ScrollView {
+                                VStack(alignment:.center) {
+                                    DetailOrderListView(orderViewModel: orderViewModel, searchText: $searchText)
                                 }
                             }
+                        } else {
+                            ProgressView()
                         }
-                    } else {
-                        ProgressView()
+                    case "Raporlar":
+                        RaporlarView()
+                    default:
+                        EmptyView()
                     }
+                    
                 }
                 .onAppear {
                     if !orderViewModel.isLoaded {
-                        orderViewModel.fetchOrders(subdomain: "3dteknomarket")
+                        orderViewModel.fetchOrders(subdomain: loginViewModel.subdomain)
                     }
                 }
-                .navigationTitle("Siparişler")
+                .navigationTitle(selectedTab)
                 .navigationBarTitleDisplayMode(.inline)
+                .searchable(text: $searchText)
                 
                 .navigationBarItems(trailing: Button(action: {
                     loginViewModel.signOut()
@@ -104,7 +69,16 @@ struct OrderView: View {
     }
 }
 
-#Preview {
-    OrderView()
+struct RaporlarView: View {
+    var body: some View {
+        NavigationStack {
+            VStack {
+                Text("Raporlar")
+                Spacer()
+            }
+        }
+    }
 }
+
+
 

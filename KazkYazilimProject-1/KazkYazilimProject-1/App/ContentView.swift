@@ -23,6 +23,9 @@ struct ContentView: View {
                let email = loginScreenViewModel.keychain.get("email"),
                let password = loginScreenViewModel.keychain.get("password") {
                 URLSessionApiService.shared.token = token
+                print(token)
+                print(email)
+                print(password)
                 loginScreenViewModel.email = email
                 loginScreenViewModel.password = password
                 loginScreenViewModel.isLogged = true

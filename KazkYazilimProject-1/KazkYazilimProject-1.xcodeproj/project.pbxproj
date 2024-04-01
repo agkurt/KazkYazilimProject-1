@@ -10,6 +10,7 @@
 		E815F31E2BAA517B0042E605 /* URLSessionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F31D2BAA517B0042E605 /* URLSessionApiService.swift */; };
 		E815F3212BAA521F0042E605 /* ApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3202BAA521F0042E605 /* ApiServiceProtocol.swift */; };
 		E815F3242BAA580E0042E605 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3232BAA580E0042E605 /* APIConstants.swift */; };
+		E828B13B2BBA59AF007D658E /* DetailOrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828B13A2BBA59AF007D658E /* DetailOrderListView.swift */; };
 		E8BF1BE92BB9EBFF00B9FF7A /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E8BF1BE82BB9EBFF00B9FF7A /* KeychainSwift */; };
 		E8D511E62BB5EE0B008529A4 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D511E52BB5EE0B008529A4 /* UserLogin.swift */; };
 		E8D511EB2BB66A64008529A4 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D511EA2BB66A64008529A4 /* OrderViewModel.swift */; };
@@ -53,6 +54,7 @@
 		E815F31D2BAA517B0042E605 /* URLSessionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionApiService.swift; sourceTree = "<group>"; };
 		E815F3202BAA521F0042E605 /* ApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceProtocol.swift; sourceTree = "<group>"; };
 		E815F3232BAA580E0042E605 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		E828B13A2BBA59AF007D658E /* DetailOrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOrderListView.swift; sourceTree = "<group>"; };
 		E8D511E52BB5EE0B008529A4 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		E8D511E92BB61066008529A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E8D511EA2BB66A64008529A4 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				E8D511F22BB67189008529A4 /* OrderView.swift */,
+				E828B13A2BBA59AF007D658E /* DetailOrderListView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				E8D731332BAA3D47003D1EF9 /* FocusableField.swift in Sources */,
 				E8DE318B2BAB8B6900B60F57 /* UserLoginApiService.swift in Sources */,
 				E8D7313C2BAA3D98003D1EF9 /* UIColor + Ext.swift in Sources */,
+				E828B13B2BBA59AF007D658E /* DetailOrderListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,6 @@ struct LoginScreenView: View {
     @FocusState var focusedField:FocusableField?
     @Environment(\.colorScheme) private var colorScheme
     @StateObject var viewModel = LoginScreenViewModel(userLoginApiService: .init(apiServiceProtocol: URLSessionApiService.shared))
-    @State private var showingAlert = false
     
     var body: some View {
         NavigationStack {
@@ -49,8 +48,11 @@ struct LoginScreenView: View {
                             
                             Button(action: {
                                 viewModel.addUserLogin(userLogin: viewModel.userLogin)
+                                if viewModel.showAlert {
+                                    viewModel.showAlert = true
+                                }
                             }) {
-                                if viewModel.isLogged {
+                                if viewModel.isLoading {
                                     ProgressView()
                                 } else {
                                     Text("Login")
@@ -62,6 +64,11 @@ struct LoginScreenView: View {
                                         .cornerRadius(30)
                                 }
                             }
+                            .alert(isPresented: $viewModel.showAlert) {
+                                Alert(title: Text("Hata"), message: Text("Lütfen tüm alanları doldurunuz."), dismissButton: .default(Text("Tamam")))
+                            }
+                            
+                            
                             .background(
                                 NavigationLink(destination: OrderView().navigationBarBackButtonHidden(true), isActive: $viewModel.isLogged) {
                                     EmptyView()
