@@ -16,7 +16,7 @@ class OrderApiService {
     }
     
     func getOrderRequest(subdomain:String,completion : @escaping (Result<OrdersResponse,Error>) -> Void) {
-        apiServiceProtocol.postRequest(endpoint: APIConstants.productURL(subdomain: subdomain)) { (result:Result<OrdersResponse,Error>) in
+        apiServiceProtocol.postTokenRequest(endpoint: APIConstants.productURL(subdomain: subdomain)) { (result:Result<OrdersResponse,Error>) in
             switch result {
             case .success(let data):
                 completion(.success(data))

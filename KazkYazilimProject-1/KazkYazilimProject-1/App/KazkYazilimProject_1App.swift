@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct KazkYazilimProject_1App: App {
 
-    @StateObject var loginScreenViewModel = LoginScreenViewModel(userLoginApiService: .init(apiServiceProtocol: URLSessionApiService.shared))
+    @ObservedObject var loginScreenViewModel = LoginScreenViewModel(userLoginApiService: .init(apiServiceProtocol: URLSessionApiService.shared))
     
     var body: some Scene {
         WindowGroup {

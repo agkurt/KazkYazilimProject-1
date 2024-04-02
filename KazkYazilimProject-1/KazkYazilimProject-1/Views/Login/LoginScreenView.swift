@@ -17,9 +17,8 @@ struct LoginScreenView: View {
         NavigationStack {
             ZStack {
                 BackgroundView()
-                GeometryReader { geometry in
                     VStack {
-                        VStack(spacing:0) {
+                        VStack() {
                             VStack(alignment:.leading,spacing: 15) {
                                 Text(" KAZK ECOMMERCE")
                                     .frame(maxWidth: .infinity,alignment:.leading)
@@ -28,7 +27,6 @@ struct LoginScreenView: View {
                                     .frame(maxWidth: .infinity,alignment:.leading)
                                     .font(.custom("Poppins-Bold", size: 25))
                             }
-                            .padding(.bottom,30)
                             
                             Text("Sign in with email")
                                 .font(.custom("Poppins-Light", size: 15))
@@ -48,12 +46,15 @@ struct LoginScreenView: View {
                             
                             Button(action: {
                                 viewModel.addUserLogin(userLogin: viewModel.userLogin)
-                                if viewModel.showAlert {
-                                    viewModel.showAlert = true
-                                }
                             }) {
                                 if viewModel.isLoading {
                                     ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle())
+                                        .foregroundColor(.white)
+                                        .padding(10)
+                                        .background(Color(hex: "#313a45"))
+                                        .cornerRadius(30)
+                                        .frame(maxWidth: .infinity, alignment: .center)
                                 } else {
                                     Text("Login")
                                         .font(.custom("Poppins-Light", size: 15))
@@ -65,28 +66,30 @@ struct LoginScreenView: View {
                                 }
                             }
                             .alert(isPresented: $viewModel.showAlert) {
-                                Alert(title: Text("Hata"), message: Text("Lütfen tüm alanları doldurunuz."), dismissButton: .default(Text("Tamam")))
+                                Alert(title: Text("Login Failed"), message: Text("Please check your email and password and try again."), dismissButton: .default(Text("OK")))
                             }
-                            
+                            .disabled(viewModel.isLoading) // Disable button when loading
                             
                             .background(
                                 NavigationLink(destination: OrderView().navigationBarBackButtonHidden(true), isActive: $viewModel.isLogged) {
                                     EmptyView()
                                 }
-                                    .hidden() // Bu, NavigationLink'i gizler
+                                    .hidden()
                             )
-                            .ignoresSafeArea(.keyboard)
                             .padding()
                         }
                         .navigationBarBackButtonHidden(true)
+                        
                     }
                     .clipShape(.rect(cornerRadius:20))
                     .padding()
-                    .frame(minWidth: geometry.size.width * 1,minHeight: geometry.size.height * 1)
                     .padding(.top,25)
-                }
+                
             }
             .ignoresSafeArea(.container)
+            .onTapGesture {
+                UIApplication.shared.hideKeyboard()
+            }
         }
     }
 }

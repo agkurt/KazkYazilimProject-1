@@ -9,12 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var loginScreenViewModel: LoginScreenViewModel
-    
+    @AppStorage("isOnboarding") var isOnboarding: Bool = true
+
     var body: some View {
         VStack {
-            if loginScreenViewModel.isLogged {
+            if isOnboarding {
+                OnBoardingView()
+            }else if loginScreenViewModel.isLogged {
                 OrderView()
-            } else {
+            }else {
                 LoginScreenView()
             }
         }
@@ -23,14 +26,12 @@ struct ContentView: View {
                let email = loginScreenViewModel.keychain.get("email"),
                let password = loginScreenViewModel.keychain.get("password") {
                 URLSessionApiService.shared.token = token
-                print(token)
-                print(email)
-                print(password)
                 loginScreenViewModel.email = email
                 loginScreenViewModel.password = password
                 loginScreenViewModel.isLogged = true
             }
         })
+        .environmentObject(loginScreenViewModel)
     }
 }
 

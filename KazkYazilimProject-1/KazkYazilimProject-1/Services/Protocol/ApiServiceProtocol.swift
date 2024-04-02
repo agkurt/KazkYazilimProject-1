@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ApiServiceProtocol {
-    func postRequest<T: Codable>(endpoint: String, completion: @escaping(Result<T, Error>) -> Void) // GET
+    func postTokenRequest<T: Codable>(endpoint: String, completion: @escaping(Result<T, Error>) -> Void) // GET
     func addRequest<T: Codable,U:Codable>(endpoint: String, data: T, completion: @escaping(Result<U, Error>) -> Void) // POST
     func updateRequest<T: Codable>(endpoint: URL, data: T, completion: @escaping(Result<Void, Error>) -> Void)
     func deleteRequest(endpoint: URL, completion: @escaping(Result<Void, Error>) -> Void)

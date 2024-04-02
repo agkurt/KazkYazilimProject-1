@@ -58,7 +58,7 @@ struct DetailOrderListView: View {
                                     Spacer()
                                     Text("\(Int(item.count))")
                                         .padding()
-                                    Text("\(String(format: "%.2f", item.price))")
+                                    Text("₺\(String(format: "%.2f", item.price))")
                                         .foregroundStyle(.green)
                                 }
                             }

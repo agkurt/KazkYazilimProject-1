@@ -8,7 +8,6 @@
 import SwiftUI
 import KeychainSwift
 
-
 class LoginScreenViewModel:ObservableObject {
     
     @AppStorage("subdomain") var subdomain: String = ""
@@ -17,14 +16,11 @@ class LoginScreenViewModel:ObservableObject {
     @Published var isLogged: Bool = false
     @Published var colorScheme: ColorScheme?
     @Published var emails: String = ""
-    @Published var focusedField: FocusableField?
     @Published var userLoginResponse: UserLoginResponse?
     @Published var userLogin = UserLogin(email: "", password: "")
     @Published var keychain = KeychainSwift()
     @Published var isLoading = false
     @Published var showAlert = false
-    
-    
     
     let userLoginApiService: UserLoginApiService
     
@@ -51,7 +47,11 @@ class LoginScreenViewModel:ObservableObject {
                         self.isLoading = false
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.showAlert = true
+                        self.isLoading = false
+                        print(error.localizedDescription)
+                    }
                 }
             }
         }
@@ -61,22 +61,8 @@ class LoginScreenViewModel:ObservableObject {
         keychain.delete("token")
         URLSessionApiService.shared.token = nil
         self.isLogged = false
-        DispatchQueue.main.async {
-            self.objectWillChange.send()
-        }
-    }
-    
-    func focusNextField(focusField:FocusableField) {
-        switch focusedField {
-        case .subdomain:
-            focusedField = .email
-        case .email:
-            focusedField = .password
-        case .password:
-            focusedField = .subdomain
-        case .none:
-            break
-        }
+        self.objectWillChange.send()
+        
     }
     
     func getColorBasedOnScheme(colorScheme:ColorScheme) -> Color {

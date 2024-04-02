@@ -15,7 +15,7 @@ class URLSessionApiService: ApiServiceProtocol {
     
     private init ()  { }
     
-    func postRequest<T:Decodable>(endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
+    func postTokenRequest<T:Decodable>(endpoint: String, completion: @escaping (Result<T, Error>) -> Void) {
         
         guard let url = URL(string: endpoint) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
@@ -42,7 +42,6 @@ class URLSessionApiService: ApiServiceProtocol {
             do {
                 let decodedData = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(decodedData))
-                print(decodedData)
             }catch {
                 print(error)
                 completion(.failure(error))

@@ -13,9 +13,7 @@ struct BackgroundView: View {
         .edgesIgnoringSafeArea(.all)
         
     }
-
     @Environment(\.colorScheme) private var colorScheme
-
     private func getColorBasedOnScheme() -> Color {
         switch colorScheme {
         case .light:

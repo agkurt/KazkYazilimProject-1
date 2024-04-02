@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E803073F2BBA9594001BE916 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803073E2BBA9594001BE916 /* HideKeyboard.swift */; };
+		E80307412BBAA1BB001BE916 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80307402BBAA1BA001BE916 /* ChartView.swift */; };
+		E8030F0D2BBB7513008164A7 /* OnboardingScreensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8030F0C2BBB7513008164A7 /* OnboardingScreensView.swift */; };
+		E8030F0F2BBB75B6008164A7 /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8030F0E2BBB75B6008164A7 /* StartButtonView.swift */; };
+		E8030F112BBB7650008164A7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8030F102BBB7650008164A7 /* OnboardingView.swift */; };
 		E815F31E2BAA517B0042E605 /* URLSessionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F31D2BAA517B0042E605 /* URLSessionApiService.swift */; };
 		E815F3212BAA521F0042E605 /* ApiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3202BAA521F0042E605 /* ApiServiceProtocol.swift */; };
 		E815F3242BAA580E0042E605 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815F3232BAA580E0042E605 /* APIConstants.swift */; };
 		E828B13B2BBA59AF007D658E /* DetailOrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828B13A2BBA59AF007D658E /* DetailOrderListView.swift */; };
+		E8A5C6882BBB415B00E8314B /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5C6872BBB415B00E8314B /* ChartViewModel.swift */; };
+		E8A5C68A2BBB44A300E8314B /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5C6892BBB44A300E8314B /* OnboardingModel.swift */; };
 		E8BF1BE92BB9EBFF00B9FF7A /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E8BF1BE82BB9EBFF00B9FF7A /* KeychainSwift */; };
 		E8D511E62BB5EE0B008529A4 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D511E52BB5EE0B008529A4 /* UserLogin.swift */; };
 		E8D511EB2BB66A64008529A4 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D511EA2BB66A64008529A4 /* OrderViewModel.swift */; };
@@ -51,10 +58,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E803073E2BBA9594001BE916 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
+		E80307402BBAA1BA001BE916 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		E8030F0C2BBB7513008164A7 /* OnboardingScreensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreensView.swift; sourceTree = "<group>"; };
+		E8030F0E2BBB75B6008164A7 /* StartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonView.swift; sourceTree = "<group>"; };
+		E8030F102BBB7650008164A7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		E815F31D2BAA517B0042E605 /* URLSessionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionApiService.swift; sourceTree = "<group>"; };
 		E815F3202BAA521F0042E605 /* ApiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceProtocol.swift; sourceTree = "<group>"; };
 		E815F3232BAA580E0042E605 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		E828B13A2BBA59AF007D658E /* DetailOrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOrderListView.swift; sourceTree = "<group>"; };
+		E8A5C6872BBB415B00E8314B /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		E8A5C6892BBB44A300E8314B /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		E8D511E52BB5EE0B008529A4 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		E8D511E92BB61066008529A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E8D511EA2BB66A64008529A4 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
@@ -132,6 +146,16 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		E8A5C68E2BBB5F1000E8314B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				E8030F0C2BBB7513008164A7 /* OnboardingScreensView.swift */,
+				E8030F0E2BBB75B6008164A7 /* StartButtonView.swift */,
+				E8030F102BBB7650008164A7 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		E8D731102BAA3CCD003D1EF9 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +200,7 @@
 		E8D7312A2BAA3CD5003D1EF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8A5C68E2BBB5F1000E8314B /* Onboarding */,
 				E8DE31812BAB31E300B60F57 /* Home */,
 				E8DE31802BAB31DE00B60F57 /* Login */,
 				E8D731342BAA3D55003D1EF9 /* ComponentsViews */,
@@ -188,6 +213,7 @@
 			children = (
 				E8D731302BAA3D35003D1EF9 /* LoginScreenViewModel.swift */,
 				E8D511EA2BB66A64008529A4 /* OrderViewModel.swift */,
+				E8A5C6872BBB415B00E8314B /* ChartViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -198,6 +224,7 @@
 				E8D731322BAA3D47003D1EF9 /* FocusableField.swift */,
 				E8D511E52BB5EE0B008529A4 /* UserLogin.swift */,
 				E8D511EE2BB66D6D008529A4 /* Order.swift */,
+				E8A5C6892BBB44A300E8314B /* OnboardingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,6 +232,7 @@
 		E8D7312D2BAA3CDB003D1EF9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E803073E2BBA9594001BE916 /* HideKeyboard.swift */,
 				E8D7313B2BAA3D97003D1EF9 /* UIColor + Ext.swift */,
 			);
 			path = Extensions;
@@ -253,6 +281,7 @@
 			children = (
 				E8D511F22BB67189008529A4 /* OrderView.swift */,
 				E828B13A2BBA59AF007D658E /* DetailOrderListView.swift */,
+				E80307402BBAA1BA001BE916 /* ChartView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -394,14 +423,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E803073F2BBA9594001BE916 /* HideKeyboard.swift in Sources */,
 				E8D511EB2BB66A64008529A4 /* OrderViewModel.swift in Sources */,
 				E8D731382BAA3D6C003D1EF9 /* SecureTextField.swift in Sources */,
 				E8D511EF2BB66D6D008529A4 /* Order.swift in Sources */,
 				E8D511F32BB67189008529A4 /* OrderView.swift in Sources */,
 				E8D7311F2BAA3CCD003D1EF9 /* LoginScreenView.swift in Sources */,
+				E8A5C68A2BBB44A300E8314B /* OnboardingModel.swift in Sources */,
 				E8D511ED2BB66C09008529A4 /* OrderApiService.swift in Sources */,
 				E8D731362BAA3D63003D1EF9 /* TextFieldView.swift in Sources */,
+				E8A5C6882BBB415B00E8314B /* ChartViewModel.swift in Sources */,
 				E815F3212BAA521F0042E605 /* ApiServiceProtocol.swift in Sources */,
+				E8030F112BBB7650008164A7 /* OnboardingView.swift in Sources */,
 				E8D7313A2BAA3D75003D1EF9 /* BackgroundView.swift in Sources */,
 				E8D7311D2BAA3CCD003D1EF9 /* KazkYazilimProject_1App.swift in Sources */,
 				E8D731312BAA3D35003D1EF9 /* LoginScreenViewModel.swift in Sources */,
@@ -410,8 +443,11 @@
 				E8D511E62BB5EE0B008529A4 /* UserLogin.swift in Sources */,
 				E8D511F52BB682E9008529A4 /* ContentView.swift in Sources */,
 				E8D731332BAA3D47003D1EF9 /* FocusableField.swift in Sources */,
+				E80307412BBAA1BB001BE916 /* ChartView.swift in Sources */,
 				E8DE318B2BAB8B6900B60F57 /* UserLoginApiService.swift in Sources */,
+				E8030F0D2BBB7513008164A7 /* OnboardingScreensView.swift in Sources */,
 				E8D7313C2BAA3D98003D1EF9 /* UIColor + Ext.swift in Sources */,
+				E8030F0F2BBB75B6008164A7 /* StartButtonView.swift in Sources */,
 				E828B13B2BBA59AF007D658E /* DetailOrderListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
