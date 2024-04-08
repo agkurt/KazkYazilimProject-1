@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct OrderView: View {
+    
     @EnvironmentObject var loginViewModel: LoginScreenViewModel
-    @StateObject var orderViewModel = OrderViewModel(orderApiService: OrderApiService(apiServiceProtocol: URLSessionApiService.shared))
+    @StateObject var orderViewModel = OrderViewModel(orderApiService: .init(apiServiceProtocol: URLSessionApiService.shared))
     @State private var isLoggedOut = false
     @State private var selectedTab = "Raporlar"
     @State private var searchText = ""
-    @State private var showingAlert = false
     
     var body: some View {
-        NavigationStack {
+       
             ZStack {
                 BackgroundView()
                 VStack(alignment:.center) {
@@ -56,6 +56,7 @@ struct OrderView: View {
                         }
                     }
                 }
+                
                 .onAppear {
                     if !orderViewModel.isLoaded {
                         orderViewModel.fetchOrders(subdomain: loginViewModel.subdomain)
@@ -64,25 +65,20 @@ struct OrderView: View {
                 .navigationTitle(selectedTab)
                 .navigationBarTitleDisplayMode(.inline)
                 .searchable(text: $searchText)
-                .navigationBarItems(trailing: NavigationLink(destination: LoginScreenView(), isActive: $isLoggedOut) {
-                    Button(action: {
-                        loginViewModel.signOut()
-                        isLoggedOut = true
-                    }) {
-                        Text("Çıkış Yap")
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            loginViewModel.signOut()
+                            loginViewModel.userLogin.password = ""
+                            loginViewModel.userLogin.email = ""
+                        } label: {
+                            Text("Çıkış Yap")
+                        }
+
                     }
-                })
-                .alert(isPresented: $orderViewModel.showNoInternetAlert) {
-                    Alert(title: Text("No Internet Connection"),
-                          message: Text("Please check your internet connection and try again."),
-                          dismissButton: .default(Text("OK"), action: {
-                        isLoggedOut = true
-                        showingAlert = true
-                    }))
                 }
-                
             }
-        }
+        
     }
 }
 

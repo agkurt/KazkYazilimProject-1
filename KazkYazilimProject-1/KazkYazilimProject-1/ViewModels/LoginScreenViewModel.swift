@@ -13,43 +13,44 @@ class LoginScreenViewModel:ObservableObject {
     @AppStorage("subdomain") var subdomain: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var isLogged: Bool = false
+    @Published var isLogged: Bool = false // for login process
     @Published var colorScheme: ColorScheme?
     @Published var emails: String = ""
     @Published var userLoginResponse: UserLoginResponse?
     @Published var userLogin = UserLogin(email: "", password: "")
     @Published var keychain = KeychainSwift()
-    @Published var isLoading = false
-    @Published var showAlert = false
+    @Published var isLoading = false //for progress view
+    @Published var isErrorAlert = false // for mail and password control
     
     let userLoginApiService: UserLoginApiService
     
-    init(userLoginApiService: UserLoginApiService) {
+     init(userLoginApiService: UserLoginApiService) {
         self.userLoginApiService = userLoginApiService
         
     }
     
     func addUserLogin(userLogin: UserLogin) {
-        if subdomain.isEmpty || userLogin.email.isEmpty || userLogin.password.isEmpty  {
-            showAlert = true
+        if subdomain.isEmpty || userLogin.email.isEmpty || userLogin.password.isEmpty {
+            isErrorAlert = true
         } else {
             isLoading = true
             userLoginApiService.loginRequest(subdomain:subdomain,data: userLogin) { result in
                 switch result {
                 case .success(let data):
-                    DispatchQueue.main.async {
-                        URLSessionApiService.shared.token = data.token
-                        self.keychain.set(data.token, forKey: "token")
-                        self.keychain.set(self.email, forKey: "email")
-                        self.keychain.set(self.password, forKey: "password")
+                    URLSessionApiService.shared.token = data.token
+                    self.keychain.set(data.token, forKey: "token")
+                    self.keychain.set(self.email, forKey: "email")
+                    self.keychain.set(self.password, forKey: "password")
+                    OperationQueue.main.addOperation {
                         self.userLoginResponse = data
                         self.isLogged = true
-                        self.isLoading = false
+                        self.isLoading = false  // for progressView
                     }
+                    
                 case .failure(let error):
-                    DispatchQueue.main.async {
-                        self.showAlert = true
+                    OperationQueue.main.addOperation {
                         self.isLoading = false
+                        self.isErrorAlert = false
                         print(error.localizedDescription)
                     }
                 }
@@ -61,8 +62,8 @@ class LoginScreenViewModel:ObservableObject {
         keychain.delete("token")
         URLSessionApiService.shared.token = nil
         self.isLogged = false
-        self.objectWillChange.send()
-        
+        self.email = ""
+        self.password = ""
     }
     
     func getColorBasedOnScheme(colorScheme:ColorScheme) -> Color {

@@ -8,29 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var loginScreenViewModel: LoginScreenViewModel
+    
+    @StateObject var loginScreenViewModel = LoginScreenViewModel(userLoginApiService: .init(apiServiceProtocol: URLSessionApiService.shared))
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
+    @StateObject var orderViewModel = OrderViewModel(orderApiService: .init(apiServiceProtocol: URLSessionApiService.shared))
 
     var body: some View {
-        VStack {
-            if isOnboarding {
-                OnBoardingView()
-            }else if loginScreenViewModel.isLogged {
-                OrderView()
-            }else {
-                LoginScreenView()
+        NavigationStack {
+            VStack {
+                if isOnboarding {
+                    OnBoardingView()
+                }else if loginScreenViewModel.isLogged {
+                    OrderView(orderViewModel: orderViewModel)
+                }else {
+                    LoginScreenView()
+                }
             }
+            .onAppear(perform: {
+                if let token = loginScreenViewModel.keychain.get("token"),
+                   let email = loginScreenViewModel.keychain.get("email"),
+                   let password = loginScreenViewModel.keychain.get("password") {
+                    URLSessionApiService.shared.token = token
+                    loginScreenViewModel.email = email
+                    loginScreenViewModel.password = password
+                    loginScreenViewModel.isLogged = true
+                }
+            })
         }
-        .onAppear(perform: {
-            if let token = loginScreenViewModel.keychain.get("token"),
-               let email = loginScreenViewModel.keychain.get("email"),
-               let password = loginScreenViewModel.keychain.get("password") {
-                URLSessionApiService.shared.token = token
-                loginScreenViewModel.email = email
-                loginScreenViewModel.password = password
-                loginScreenViewModel.isLogged = true
-            }
-        })
         .environmentObject(loginScreenViewModel)
     }
 }
